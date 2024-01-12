@@ -12,3 +12,13 @@ dropper.addEventListener('dragenter', (event) => {
 dropper.addEventListener('dragleave', (event) => {
     dropper.style.backgroundColor = 'dodgerblue'
 })
+
+draggable.addEventListener('dragstart', (event) => {
+    event.dataTransfer.setData('text/plain', draggable.innerHTML)
+})
+
+dropper.addEventListener('drop', (event) => {
+    const data = event.dataTransfer.getData('text/plain')
+    dropper.innerHTML = `${data}  ${dropper.innerHTML}`
+    dropper.style.backgroundColor = 'dodgerblue'
+})
